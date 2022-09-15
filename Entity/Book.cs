@@ -10,7 +10,7 @@ namespace PCIS.Entity
     {
         public int Id { get; set; } = 1;
         public string Name { get; set; } = "DefaultName";
-        public int AuthorId { get; set; } = 1;
+        public Author Author { get; set; }
         public float Price { get; set; } = 0f;
 
         public override string? ToString()
@@ -18,7 +18,7 @@ namespace PCIS.Entity
             return new StringBuilder()
                 .AppendLine($"Id: {Id}")
                 .AppendLine($"Name: {Name}")
-                .AppendLine($"AuthorId: {AuthorId}")
+                .AppendLine($"Author: {Author}")
                 .AppendLine($"Price: {Price}")
                 .ToString();
         }
