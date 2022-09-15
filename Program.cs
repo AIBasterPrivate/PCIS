@@ -372,9 +372,12 @@ internal class Program
                 IsReturned = false
             });//3
 
-            using (SqlConnection connection = new SqlConnection("Server=localhost;Database=Library;Trusted_Connection=True;"))
+            using (SqlConnection connection = LibraryDBSingleton.GetSingleton.SqlConnection)
             {
-                connection.Open();
+                if (connection.State == ConnectionState.Closed)
+                {
+                    connection.Open();
+                }
                 SqlCommand command = connection.CreateCommand();
                 command.Connection = connection;
 
