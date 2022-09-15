@@ -31,7 +31,7 @@ internal class Program
                 builder.AppendLine("5 - Select BookOutStorage table");
                 builder.AppendLine("6 - Select Storage table");
                 Console.WriteLine(builder);
-                int key = -1;
+                int key;
                 int.TryParse(Console.ReadLine(), out key);
 
                 switch (key)
