@@ -1,51 +1,51 @@
 ﻿CREATE TABLE [Person] (
-  id integer NOT NULL UNIQUE IDENTITY (1, 1),
-  firstname varchar(15) NOT NULL,
-  lastname varchar(15) NOT NULL,
-  middlename varchar(15),
-  adress varchar(50),
-  birthday date NOT NULL,
-  phone_number varchar(14),
-  PRIMARY KEY (id)
-)
-GO
-CREATE TABLE [Book] (
-  id integer NOT NULL IDENTITY (1, 1),
-  book_name varchar(20) NOT NULL,
-  author_id integer NOT NULL,
-  price float NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (author_id) REFERENCES Author(id)
-)
-GO
-CREATE TABLE [Author] (
-  id integer NOT NULL IDENTITY (1, 1),
-  firstname varchar(15) NOT NULL,
-  lastname varchar(15) NOT NULL,
-  PRIMARY KEY (id)
-)
-GO
-CREATE TABLE [BooksOutOfStorage] (
-  book_id integer NOT NULL,
-  library_user_id integer NOT NULL,
-  take_away_time datetime NOT NULL,
-  give_away_time datetime NOT NULL,
-  is_returned bit NOT NULL DEFAULT 0,
-  FOREIGN KEY (book_id) REFERENCES Book(id),
-  FOREIGN KEY (library_user_id) REFERENCES LibraryUser(id)
-)
-GO
-CREATE TABLE [Storage] (
-  book_id integer NOT NULL,
-  absolute_amount integer NOT NULL,
-  current_amount integer NOT NULL,
-  FOREIGN KEY (book_id) REFERENCES Book(id),
+  Id integer NOT NULL IDENTITY (1, 1),
+  Firstname varchar(30) NOT NULL,
+  MIddlename varchar(30),
+  Lastname varchar(30) NOT NULL,
+  Adress varchar(50),
+  Birthday date NOT NULL,
+  PhoneNumber varchar(20) NOT NULL,
+  PRIMARY KEY (Id)
 )
 GO
 CREATE TABLE [LibraryUser] (
-  id integer NOT NULL IDENTITY (1, 1),
-  person_id integer NOT NULL,
-  PRIMARY KEY (id),
-  FOREIGN KEY (person_id) REFERENCES Person(id),
+  Id integer NOT NULL IdENTITY (1, 1),
+  PersonId integer NOT NULL,
+  PRIMARY KEY (Id),
+  FOREIGN KEY (PersonId) REFERENCES Person(Id),
+)
+GO
+CREATE TABLE [Author] (
+  Id integer NOT NULL IDENTITY (1, 1),
+  Firstname varchar(15) NOT NULL,
+  Lastname varchar(15) NOT NULL,
+  PRIMARY KEY (Id)
+)
+GO
+CREATE TABLE [Book] (
+  Id integer NOT NULL IDENTITY (1, 1),
+  BookName varchar(20) NOT NULL,
+  AuthorId integer NOT NULL,
+  Price float NOT NULL,
+  PRIMARY KEY (Id),
+  FOREIGN KEY (AuthorId) REFERENCES Author(Id)
+)
+GO
+CREATE TABLE [BookOutOfStorage] (
+  BookId integer NOT NULL,
+  LibraryUserId integer NOT NULL,
+  TakeAwayTime datetime NOT NULL,
+  GiveAwayTime datetime NOT NULL,
+  IsReturned bit NOT NULL DEFAULT 0,
+  FOREIGN KEY (BookId) REFERENCES Book(Id),
+  FOREIGN KEY (LibraryUserId) REFERENCES LibraryUser(Id)
+)
+GO
+CREATE TABLE [Storage] (
+  BookId integer NOT NULL,
+  AbsoluteAmount integer NOT NULL,
+  CurrentAmount integer NOT NULL,
+  FOREIGN KEY (BookId) REFERENCES Book(Id),
 )
 
